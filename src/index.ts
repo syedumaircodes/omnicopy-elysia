@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-
+import openapi from "@elysia/openapi";
 const campaigns = [
   {
     campaignId: 1,
@@ -16,10 +16,11 @@ const campaigns = [
 ];
 
 const app = new Elysia({ prefix: "/api/v1" })
+  .use(openapi())
   .get("/campaigns", () => {
     return { data: campaigns };
   })
-  .get("/", () => "Hello Elysia")
+  .get("/", () => "Welcome to")
   .listen(3000);
 
 console.log(
